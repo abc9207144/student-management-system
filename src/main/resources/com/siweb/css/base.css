@@ -1,0 +1,55 @@
+@import 'colorPlatte.css';
+@import 'tableView.css';
+@import 'pagination.css';
+@import 'mfxTextField.css';
+@import 'mfxButton.css';
+@import 'mfxComboBox.css';
+@import 'mfxDatePicker.css';
+
+#topBar {
+    -fx-font-size: 15px;
+    -fx-background-color: -off-background-color;
+}
+
+#mainMenu .mfx-rectangle-toggle-node {
+	/*-mfx-main: #0A2647;*/
+	-mfx-secondary: white;
+    -fx-padding: 10;
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-padding: 0px;
+    -fx-border-width: 0px;
+    -mfx-unselected-color: white;
+    -mfx-text-fill: white;
+}
+
+#mainMenu .mfx-rectangle-toggle-node .mfx-text-field {
+    -fx-text-inner-color: white; /* unselected text color */
+}
+
+
+#mainMenu {
+    -fx-font-size: 15px;
+    -fx-background-color: -primary-color;
+}
+
+#mainMenu .mfx-icon-wrapper .mfx-font-icon, #mainMenu .label {
+	-mfx-color: white;
+	-mfx-main: white;
+	-fx-text-fill: white;
+	-mfx-secondary: white;
+	-mfx-unselected-color: white;
+}
+
+#mainMenu .mfx-rectangle-toggle-node:selected, #mainMenu .mfx-rectangle-toggle-node:selected .mfx-icon-wrapper .mfx-font-icon, #mainMenu .mfx-rectangle-toggle-node:selected .mfx-text-field {
+    -fx-text-fill: #0A2647;
+    -fx-background-color: rgba(255, 255, 255, 0.39);
+    -mfx-color: #0A2647;
+    -fx-text-inner-color: #0A2647;
+}
+
+#mainMenu .label {
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+}
+

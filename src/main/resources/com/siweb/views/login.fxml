@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane id="rootPane" fx:id="rootPane" prefHeight="900.0" prefWidth="1600.0" stylesheets="@../css/base.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.siweb.controller.LoginController">
+    <children>
+        <HBox prefHeight="900.0" prefWidth="1600.0">
+            <children>
+                <Pane prefHeight="900.0" prefWidth="640.0">
+                    <children>
+                        <VBox id="login-side-panel" alignment="CENTER" prefHeight="898.0" prefWidth="637.0" spacing="20.0" style="-fx-background-color: white;">
+                            <children>
+                                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/logo.png" />
+                                    </image>
+                                </ImageView>
+                                <Label text="Macao Polytechnic University">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font></Label>
+                                <Label text="Student Information System">
+                                    <font>
+                                        <Font size="30.0" />
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets bottom="30.0" />
+                                    </VBox.margin>
+                                </Label>
+                                <MFXTextField fx:id="usernameTextField" floatMode="BORDER" floatingText="Username" prefHeight="40.0" prefWidth="255.0" style="-fx-font-size: 20;" />
+                                <MFXPasswordField fx:id="passwordTextField" floatMode="BORDER" floatingText="Password" prefHeight="50.0" prefWidth="255.0" style="-fx-font-size: 20;" />
+                                <MFXButton fx:id="loginButton" buttonType="RAISED" onAction="#login" prefHeight="52.0" prefWidth="256.0" style="-fx-font-size: 20;" styleClass="login-button" text="Log in" textFill="WHITE" />
+                                <Label text="Demo users">
+                                    <padding>
+                                        <Insets top="80.0" />
+                                    </padding>
+                                    <font>
+                                        <Font size="20.0" />
+                                    </font>
+                                </Label>
+                                <HBox prefHeight="90.0" prefWidth="637.0" spacing="10.0">
+                                    <children>
+                                        <MFXButton onAction="#demoAdmin" prefHeight="90.0" prefWidth="181.0" style="-fx-font-size: 20;" styleClass="demo-button" text="Demo&#10;Administrator&#10;" textAlignment="CENTER" />
+                                        <MFXButton onAction="#demoLecturer" prefHeight="90.0" prefWidth="205.0" style="-fx-font-size: 20;" styleClass="demo-button" text="Demo&#10;Lecturer&#10;" textAlignment="CENTER" />
+                                        <MFXButton onAction="#demoStudent" prefHeight="90.0" prefWidth="186.0" style="-fx-font-size: 20;" styleClass="demo-button" text="Demo&#10;Student" textAlignment="CENTER" />
+                                    </children>
+                                    <padding>
+                                        <Insets left="50.0" right="50.0" />
+                                    </padding>
+                                </HBox>
+                            </children>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                        </VBox>
+                    </children>
+                </Pane>
+                <Pane prefHeight="900.0" prefWidth="960.0">
+                    <children>
+                        <ImageView fitHeight="960.0" fitWidth="1410.0" layoutX="-1.0" layoutY="-48.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/login-bg.jpeg" />
+                            </image>
+                            <viewport>
+                                <Rectangle2D height="790.0" minX="300.0" minY="50.0" width="1150.0" />
+                            </viewport>
+                        </ImageView>
+                    </children>
+                </Pane>
+            </children>
+        </HBox>
+    </children>
+</Pane>

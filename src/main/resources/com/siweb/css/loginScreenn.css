@@ -1,0 +1,9 @@
+@import 'base.css';
+
+
+#login-side-panel {
+    -fx-background-color: #f9f9f9;
+}
+#login-side-panel .mfx-text-field, #login-side-panel .floating-text {
+    -fx-background-color: #f9f9f9;
+}

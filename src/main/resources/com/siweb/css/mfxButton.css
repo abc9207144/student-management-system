@@ -1,0 +1,45 @@
+.mfx-button {
+    -fx-background-color: -primary-color;
+    -fx-text-fill: -background-color;
+    -fx-font-size: 14px;
+}
+.mfx-button:armed,
+.mfx-button:focused {
+    -fx-background-color: -primary-dark-color;
+    -fx-text-fill: -background-color;
+}
+
+.mfx-button.light-button,
+.mfx-button.light-button:armed,
+.mfx-button.light-button:focused {
+    -fx-background-color: -primary-light-color;
+    -fx-text-fill: -background-color;
+}
+
+.mfx-button.delete-button,
+.mfx-button.delete-button:armed,
+.mfx-button.delete-button:focused {
+    -fx-background-color: -error-color;
+    -fx-text-fill: -background-color;
+}
+
+.mfx-button.success-button,
+.mfx-button.success-button:armed,
+.mfx-button.success-button:focused {
+    -fx-background-color: -success-color;
+    -fx-text-fill: -background-color;
+}
+
+.mfx-button.demo-button,
+.mfx-button.demo-button:armed,
+.mfx-button.demo-button:focused {
+    -fx-background-color: -primary-light-color;
+    -fx-text-fill: -background-color;
+}
+
+.mfx-button.login-button,
+.mfx-button.login-button:armed,
+.mfx-button.login-button:focused {
+    -fx-background-color: -primary-color;
+    -fx-text-fill: -background-color;
+}

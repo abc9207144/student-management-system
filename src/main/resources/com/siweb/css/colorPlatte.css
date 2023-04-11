@@ -1,0 +1,15 @@
+* {
+    -primary-color: #3949AB;
+    -primary-light-color: #5C6BC0;
+    -primary-dark-color: #283593;
+    -secondary-color: #FFC107;
+    -success-color: #4CAF50;
+    -success-dark-color: #388E3C;
+    -error-color: #f44336;
+    -error-dark-color: #D32F2F;
+    -background-color: #F5F5F5;
+    -off-background-color: #dedede;
+    -text-color: #212121;
+    -disabled-color: #BDBDBD;
+    -accent-color: #E91E63;
+}
