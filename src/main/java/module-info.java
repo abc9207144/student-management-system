@@ -1,13 +1,15 @@
 module com.siweb.client {
-    requires javafx.controls;
-    requires javafx.fxml;
+
+    // for reading and writing JSON
     requires org.json;
+
+    // for making http requests
     requires java.net.http;
+
+    // for applying material design
     requires MaterialFX;
 
-
-    requires org.kordamp.bootstrapfx.core;
-
+    // core
     opens com.siweb to javafx.fxml;
     exports com.siweb;
     exports com.siweb.model;

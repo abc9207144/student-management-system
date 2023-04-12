@@ -1,10 +1,9 @@
 @import 'colorPlatte.css';
 @import 'tableView.css';
 @import 'pagination.css';
-@import 'mfxTextField.css';
+@import 'mfxTextView.css';
 @import 'mfxButton.css';
 @import 'mfxComboBox.css';
-@import 'mfxDatePicker.css';
 
 #topBar {
     -fx-font-size: 15px;

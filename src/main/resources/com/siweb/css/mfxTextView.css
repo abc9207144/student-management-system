@@ -1,0 +1,14 @@
+
+.mfx-text-field {
+	-mfx-main: -primary-light-color;
+	-fx-font-size: 15px;
+}
+
+.mfx-text-field .text-field {
+	-fx-highlight-fill: -primary-light-color; /* Selected text highlight */
+	-fx-prompt-text-fill: -primary-light-color; /* Prompt text color */
+}
+
+.mfx-text-field .floating-text {
+    -fx-font-size: 15px;
+}

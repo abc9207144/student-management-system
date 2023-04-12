@@ -25,19 +25,19 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/***
- * AdminBaseController is the base for all admin pages. It provides the admin menu and a contentArea which child admin pages can be loaded into
- */
-public class AdminBaseController extends BaseController {
 
+public class StudentBaseController extends BaseController
+{
     protected final UtilityHttpController http = UtilityHttpController.getInstance();
-    protected  ToggleGroup toggleGroup;
+    protected ToggleGroup toggleGroup;
+
     @FXML
     protected StackPane contentArea;
+
     @FXML
     protected VBox mainMenu;
 
-    public AdminBaseController() {
+    public StudentBaseController() {
 
         super();
         this.toggleGroup = new ToggleGroup();
@@ -66,22 +66,17 @@ public class AdminBaseController extends BaseController {
 
     }
 
-    @FXML
-    public void toAdminDashboard(){
-        try{
-            com.siweb.App.setRoot("admin-dashboard");
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-    @FXML
-    public void toAdminProfile(){
-        try{
-            com.siweb.App.setRoot("admin-student-list");
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 
+    protected ToggleButton createToggle(String icon, String text) {
 
+        MFXIconWrapper wrapper = new MFXIconWrapper(icon, 24, 32);
+
+        MFXRectangleToggleNode toggleNode = new MFXRectangleToggleNode(text, wrapper);
+
+        toggleNode.setAlignment(Pos.CENTER_LEFT);
+        toggleNode.setMaxWidth(Double.MAX_VALUE);
+        toggleNode.setToggleGroup(toggleGroup);
+
+        return toggleNode;
+    }
 }
