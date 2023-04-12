@@ -54,20 +54,6 @@ public class BuilderMFXTextFieldController {
             return this;
         }
 
-        public Builder setText(Double d) { // allow nulls on final grade
-            if(d == null) this.defaultText = "";
-            else this.defaultText = d + "";
-            return this;
-        }
-        public Builder setText(double d) {
-            this.defaultText = d + "";
-            return this;
-        }
-        public Builder setText(int i) {
-            this.defaultText = i + "";
-            return this;
-        }
-
         public Builder setPrefWidth(double prefWidth) {
             this.prefWidth = prefWidth;
             return this;
@@ -77,8 +63,6 @@ public class BuilderMFXTextFieldController {
             this.padding = padding;
             return this;
         }
-
-
 
         public Builder setOnKeyPressed(EventHandler<? super KeyEvent> onKeyPressed) {
             this.onKeyPressed = onKeyPressed;
@@ -104,8 +88,6 @@ public class BuilderMFXTextFieldController {
         this.mfxTextField.setPrefWidth(builder.prefWidth);
         this.mfxTextField.setPadding(builder.padding);
         this.mfxTextField.setDisable(builder.isDisable);
-        //this.mfxTextField.setOpacity();
-
 
         if(builder.onKeyPressed != null) {
             this.mfxTextField.setOnKeyPressed(builder.onKeyPressed);

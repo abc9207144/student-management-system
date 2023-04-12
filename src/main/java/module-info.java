@@ -10,10 +10,12 @@ module com.siweb.client {
 
     opens com.siweb to javafx.fxml;
     exports com.siweb;
-    opens com.siweb.controller to javafx.fxml;
-    exports com.siweb.controller.utility;
-    opens com.siweb.controller.utility to javafx.fxml;
     exports com.siweb.model;
     opens com.siweb.model to javafx.fxml;
     exports com.siweb.controller;
+    opens com.siweb.controller to javafx.fxml;
+    exports com.siweb.controller.utility;
+    opens com.siweb.controller.utility to javafx.fxml;
+    exports com.siweb.view.facade;
+    opens com.siweb.view.facade to javafx.fxml;
 }

@@ -3,6 +3,7 @@ package com.siweb.view.facade;
 import com.siweb.controller.utility.UtilityHttpController;
 import com.siweb.model.AppModel;
 import com.siweb.model.ObservableModel;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
@@ -29,8 +30,6 @@ public class FacadePaginatedTableController<S> {
     private final String resultsCountLabelId;
     private ObservableModel<S> observableModel;
 
-    private int previousPage = -1;
-
     /***
      * A Builder to create our Paginated Table
      * @param <S> The data model, ex. User
@@ -45,6 +44,7 @@ public class FacadePaginatedTableController<S> {
         private String ordering = "";
         private String resultsCountLabelId;
         private ObservableModel<S> observableModel;
+
 
         /***
          * Construct the required params in the builder
@@ -61,7 +61,7 @@ public class FacadePaginatedTableController<S> {
             this.resultsCountLabelId = resultsCountLabelId;
 
             // Link the tableview item list to the observable list.
-            this.tableView.setItems(observableModel.getObsList());
+            this.tableView.setItems(observableModel.get());
 
         }
 
@@ -115,14 +115,9 @@ public class FacadePaginatedTableController<S> {
         // Update table when changing pages
         pagination.setPageFactory(pageIndex -> {
 
-            // javafx calls setPageFactory() 2 times in the beginning in order to prepare for pages, and also multiple times when returning null.
-            // this is a hotfix to prevent our table refreshed multiple times unexpectedly.
-            if(pageIndex != this.previousPage)
-            {
-                this.previousPage = pageIndex;
-                this.refresh(true);
-            }
-            return new Label();
+            this.refresh();
+
+            return new Label("");
 
         });
     }
@@ -144,42 +139,21 @@ public class FacadePaginatedTableController<S> {
         this.search = search;
     }
 
-    public void clearSelection() {
-        this.tableView.getSelectionModel().clearSelection();
-    }
+    public void refresh() {
 
-    /***
-     * Refresh the table, request the updated information from the server and store the results in model again.
-     * @param isSelectFirstAfter after refreshing, either reselect the first user of the table or the user with the previous selected index
-     */
-    public void refresh(Boolean isSelectFirstAfter) {
-
-        http.get(apiEndPoint + "?limit="+pageSize+"&offset="+pagination.getCurrentPageIndex()*pageSize + "&ordering="+this.ordering+"&search="+java.net.URLEncoder.encode(this.search), (JSONObject res) -> {
+        http.get(apiEndPoint + "?ordering="+this.ordering+"&search="+this.search + "&limit="+pageSize+"&offset="+pagination.getCurrentPageIndex()*pageSize, (JSONObject res) -> {
 
             Platform.runLater(() -> {
                 pagination.setPageCount((int) Math.ceil((double) res.getInt("count") / pageSize));
 
-                int selectedIndex = tableView.getSelectionModel().getSelectedIndex();
-
-                observableModel.clearObsList();
-                observableModel.add(res.getJSONArray("results"), true);
+                observableModel.clear();
+                observableModel.add(res.getJSONArray("results"));
 
                 if(!resultsCountLabelId.isEmpty()) {
                     int currentResults = res.getJSONArray("results").length();
                     int offset = pagination.getCurrentPageIndex()*pageSize;
 
                     ((Label) AppModel.scene.lookup(resultsCountLabelId)).setText(String.format("Showing %d - %d of %d results", offset + Math.min(currentResults,1), offset + currentResults, res.getInt("count")));
-
-                    // after refreshing, we reselect the first user of the table or the user with the previous selected index automatically
-                    if (currentResults > 0)
-                    {
-                        if(selectedIndex > 0 && !isSelectFirstAfter){
-                            tableView.getSelectionModel().select(selectedIndex);
-                        }
-                        else {
-                            tableView.getSelectionModel().selectFirst();
-                        }
-                    }
                 }
 
             });

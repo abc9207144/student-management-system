@@ -8,7 +8,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.net.URI;
-import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
@@ -117,29 +116,6 @@ public class UtilityHttpController {
                 .build();
         client.sendAsync(request, BodyHandlers.ofString())
                 .thenAccept(res -> _responseHandler(res, "PUT", uri, data, listener));
-
-    }
-
-    /***
-     * Handles all authenticated PATCH requests
-     * @param uri relative URI of the request
-     * @param data body of the request
-     * @param listener callback consumer if getting a 2XX response
-     */
-    // Sender for all patch requests
-    public void patch(String uri, Map<?, ?> data, Consumer<?> listener) {
-
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(AppModel.API_URI + uri))
-                .timeout(Duration.ofSeconds(20))
-                .header("Accept", "application/json")
-                .header("Content-Type", "application/json")
-                .header("Cache-Control", "no-cache")
-                .header("Authorization", "Bearer " + accessToken)
-                .method("PATCH", BodyPublishers.ofString(new JSONObject(data).toString()))
-                .build();
-        client.sendAsync(request, BodyHandlers.ofString())
-                .thenAccept(res -> _responseHandler(res, "PATCH", uri, data, listener));
 
     }
 
@@ -290,7 +266,6 @@ public class UtilityHttpController {
                             case "POST" -> post(uri, data, listener);
                             case "PUT" -> put(uri, data, listener);
                             case "DELETE" -> delete(uri, listener);
-                            case "PATCH" -> patch(uri, data, listener);
                         }
 
                     }

@@ -2,7 +2,6 @@ package com.siweb.view.builder;
 
 import com.siweb.view.SelectOption;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
-import io.github.palexdev.materialfx.controls.MFXFilterComboBox;
 import io.github.palexdev.materialfx.enums.FloatMode;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
@@ -27,7 +26,6 @@ public class BuilderMFXComboBoxController {
         private FloatMode floatMode = FloatMode.BORDER;
         private Boolean isAnimated = false;
         private Boolean isDisable = false;
-        private Boolean isFiltered = false;
         private double prefWidth = Double.MAX_VALUE;
         private Insets padding = new Insets(6,6,6,6);
         private ChangeListener<? super SelectOption> onChangelistener;
@@ -57,20 +55,8 @@ public class BuilderMFXComboBoxController {
             return this;
         }
 
-        public Builder setValText(int i) {
-            this.valText = i + "";
-            return this;
-        }
-        public Builder setValText(double d) {
-            this.valText = d + "";
-            return this;
-        }
-        public Builder setValText(String s) {
-            this.valText = s;
-            return this;
-        }
-        public Builder setValText(Object o) {
-            this.valText = o.toString();
+        public Builder setValText(String valText) {
+            this.valText = valText;
             return this;
         }
 
@@ -81,11 +67,6 @@ public class BuilderMFXComboBoxController {
 
         public Builder setPadding(Insets padding) {
             this.padding = padding;
-            return this;
-        }
-
-        public Builder setIsFiltered(Boolean isFiltered) {
-            this.isFiltered = isFiltered;
             return this;
         }
 
@@ -103,24 +84,12 @@ public class BuilderMFXComboBoxController {
 
     private BuilderMFXComboBoxController(Builder builder) {
 
-        if (builder.isFiltered)
-        {
-            this.mfxComboBox = new MFXFilterComboBox<>(builder.items);
-        }
-        else
-        {
-            this.mfxComboBox = new MFXComboBox<>(builder.items);
-        }
-
+        this.mfxComboBox = new MFXComboBox<>(builder.items);
 
         if(!builder.valText.isEmpty())
         {
             builder.items.forEach((item) -> {
-
-                // automatically select the option either by display value or by val value
-                // this is not ideal for duplicated names in the dropdown
-                // TODO: revamp the automatic select option
-                if(item.toString().equals(builder.valText) || item.getValText().equals(builder.valText))
+                if(item.getValText().equals(builder.valText))
                 {
                     this.mfxComboBox.selectItem(item);
                 }
