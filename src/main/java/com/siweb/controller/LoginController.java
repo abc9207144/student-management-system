@@ -56,7 +56,7 @@ public class LoginController extends BaseController {
                             System.err.println("Welcome Back, Admin!");
                             System.err.println();
 
-                            com.siweb.App.setRoot("admin-base");
+                            com.siweb.App.setRoot("base");
 
                         } else if (userModel.getCurrentUserProfileRole().equals("lecturer")) {
 
