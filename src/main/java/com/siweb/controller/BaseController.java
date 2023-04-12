@@ -1,6 +1,7 @@
 package com.siweb.controller;
 
 import com.siweb.controller.utility.UtilityHttpController;
+import com.siweb.model.*;
 import io.github.palexdev.materialfx.controls.MFXIconWrapper;
 import io.github.palexdev.materialfx.controls.MFXRectangleToggleNode;
 import io.github.palexdev.materialfx.utils.ToggleButtonsUtil;
@@ -55,11 +56,8 @@ public class BaseController implements Initializable {
                 Platform.runLater(() -> {
 
                     // remove all data in the models when logging out...
-                    courseModel.clearAll();
-                    enrollmentModel.clearAll();
-                    sectionModel.clearAll();
-                    sectionTimeModel.clearAll();
-                    semesterModel.clearAll();
+
+
                     timeSlotModel.clearAll();
                     userModel.clearAll();
 

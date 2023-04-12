@@ -24,4 +24,3 @@ public class TimeSlotModel extends ObservableModel<TimeSlot> {
 
 
 }
-
