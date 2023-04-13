@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane prefHeight="850.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.siweb.controller.LecturerProfilesController">
+    <children>
+        <TableView id="usersTable" fx:id="usersTable" fixedCellSize="0.0" layoutX="65.0" layoutY="81.0" prefHeight="682.0" prefWidth="755.0" />
+        <Pagination id="usersTablePagination" fx:id="usersTablePagination" layoutX="330.0" layoutY="769.0" prefHeight="26.0" prefWidth="225.0" />
+        <Label id="resultsCountLabel" fx:id="resultsCountLabel" alignment="CENTER_RIGHT" layoutX="574.0" layoutY="763.0" prefHeight="32.0" prefWidth="246.0">
+            <padding>
+                <Insets right="10.0" />
+            </padding>
+        </Label>
+        <HBox id="tableHeaderHBox" fx:id="tableHeaderHBox" alignment="CENTER_RIGHT" layoutX="241.0" layoutY="12.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="66.0" prefWidth="580.0" spacing="8.0" />
+    </children>
+</Pane>

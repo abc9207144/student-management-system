@@ -115,7 +115,7 @@ public class FacadePaginatedTableController<S> {
         // Update table when changing pages
         pagination.setPageFactory(pageIndex -> {
 
-            this.refresh();
+            this.refresh(true);
 
             return new Label("");
 
@@ -139,12 +139,18 @@ public class FacadePaginatedTableController<S> {
         this.search = search;
     }
 
-    public void refresh() {
+    /***
+     * Refresh the table, request the updated information from the server and store the results in model again.
+     * @param selectFirstAfter after refreshing, either reselect the first user of the table or the user with the previous selected index
+     */
+    public void refresh(Boolean selectFirstAfter) {
 
-        http.get(apiEndPoint + "?ordering="+this.ordering+"&search="+this.search + "&limit="+pageSize+"&offset="+pagination.getCurrentPageIndex()*pageSize, (JSONObject res) -> {
+        http.get(apiEndPoint + "?ordering="+this.ordering+"&search="+java.net.URLEncoder.encode(this.search) + "&limit="+pageSize+"&offset="+pagination.getCurrentPageIndex()*pageSize, (JSONObject res) -> {
 
             Platform.runLater(() -> {
                 pagination.setPageCount((int) Math.ceil((double) res.getInt("count") / pageSize));
+
+                int selectedIndex = tableView.getSelectionModel().getSelectedIndex();
 
                 observableModel.clear();
                 observableModel.add(res.getJSONArray("results"));
@@ -154,6 +160,17 @@ public class FacadePaginatedTableController<S> {
                     int offset = pagination.getCurrentPageIndex()*pageSize;
 
                     ((Label) AppModel.scene.lookup(resultsCountLabelId)).setText(String.format("Showing %d - %d of %d results", offset + Math.min(currentResults,1), offset + currentResults, res.getInt("count")));
+
+                    // after refreshing, we reselect the first user of the table or the user with the previous selected index automatically
+                    if (currentResults > 0)
+                    {
+                        if(selectedIndex > 0 && !selectFirstAfter){
+                            tableView.getSelectionModel().select(selectedIndex);
+                        }
+                        else {
+                            tableView.getSelectionModel().selectFirst();
+                        }
+                    }
                 }
 
             });

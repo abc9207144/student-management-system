@@ -1,44 +1,36 @@
 package com.siweb.controller;
 
 import com.siweb.App;
+import com.siweb.controller.BaseController;
 import com.siweb.controller.utility.UtilityHttpController;
-import com.siweb.model.UserModel;
-import javafx.application.Platform;
-import javafx.fxml.FXML;
-import javafx.geometry.Insets;
-import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
-import org.json.JSONObject;
-
 import io.github.palexdev.materialfx.controls.MFXIconWrapper;
 import io.github.palexdev.materialfx.controls.MFXRectangleToggleNode;
 import io.github.palexdev.materialfx.utils.ToggleButtonsUtil;
-import io.github.palexdev.materialfx.utils.others.loader.MFXLoader;
-import javafx.fxml.Initializable;
+import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
+public class LecturerBaseController extends BaseController {
+        protected final UtilityHttpController http = UtilityHttpController.getInstance();
+        public Pane rootPane;
+        protected ToggleGroup toggleGroup;
 
-public class StudentBaseController extends BaseController
-{
-    protected final UtilityHttpController http = UtilityHttpController.getInstance();
-    public Pane rootPane;
-    protected ToggleGroup toggleGroup;
+        @FXML
+        protected StackPane contentArea;
 
-    @FXML
-    protected StackPane contentArea;
+        @FXML
+        protected VBox mainMenu;
 
-    @FXML
-    protected VBox mainMenu;
-
-    public StudentBaseController() {
+    public LecturerBaseController() {
 
         super();
         this.toggleGroup = new ToggleGroup();
@@ -46,8 +38,8 @@ public class StudentBaseController extends BaseController
 
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+        @Override
+        public void initialize(URL location, ResourceBundle resources) {
 
         Label menuLabel = new Label("SI Web");
         menuLabel.setPadding(new Insets(8));
@@ -55,11 +47,12 @@ public class StudentBaseController extends BaseController
 
         ToggleButton tempToggle = null;
 
-        tempToggle = createToggle("mfx-users", "Profile");
-        tempToggle.setOnAction(event -> App.loadFXMLtoPane(this.contentArea, "student-profiles"));
+        tempToggle = createToggle("mfx-users", "StudentProfile");
+        tempToggle.setOnAction(event -> App.loadFXMLtoPane(this.contentArea, "lecturer-profiles"));
         tempToggle.fire();
         tempToggle.setSelected(true);
         this.mainMenu.getChildren().add(tempToggle);
+
 
         tempToggle = createToggle("mfx-shortcut", "Log out");
         tempToggle.setOnAction(event -> logout());
@@ -70,7 +63,7 @@ public class StudentBaseController extends BaseController
     }
 
 
-    protected ToggleButton createToggle(String icon, String text) {
+        protected ToggleButton createToggle(String icon, String text) {
 
         MFXIconWrapper wrapper = new MFXIconWrapper(icon, 24, 32);
 

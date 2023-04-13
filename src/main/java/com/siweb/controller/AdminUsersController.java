@@ -140,7 +140,7 @@ public class AdminUsersController extends BaseController {
         tableHeaderHBox.getChildren().add(new BuilderMFXTextFieldController.Builder("search", "Search").setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 usersPaginatedTable.setSearch(((MFXTextField) AppModel.scene.lookup("#search")).getText());
-                usersPaginatedTable.refresh();
+                usersPaginatedTable.refresh(true);
             }
         }).setPrefWidth(230).setFloatMode(FloatMode.INLINE).setPadding(new Insets(4,10,4,10)).build().get());
 
@@ -160,7 +160,7 @@ public class AdminUsersController extends BaseController {
                 new SelectOption("Email (descending)", "-email")
         )).addSelectionListener((obs, oldSelection, newSelection)->{
             usersPaginatedTable.setOrdering(newSelection.getValText());
-            usersPaginatedTable.refresh();
+            usersPaginatedTable.refresh(true);
         }).setValText(defaultOrdering).setPrefWidth(230).setFloatMode(FloatMode.INLINE).setPadding(new Insets(4,4,4,10)).build().get());
 
     }
@@ -229,7 +229,7 @@ public class AdminUsersController extends BaseController {
             ), (JSONObject jsonUser) -> {
 
                 Platform.runLater(() -> {
-                    usersPaginatedTable.refresh();
+                    usersPaginatedTable.refresh(false);
                 });
 
             });
@@ -259,7 +259,7 @@ public class AdminUsersController extends BaseController {
                     userDeleteBtn.setDisable(true);
                     userSaveBtn.setDisable(true);
 
-                    usersPaginatedTable.refresh();
+                    usersPaginatedTable.refresh(false);
                 });
             });
         }
@@ -294,7 +294,7 @@ public class AdminUsersController extends BaseController {
                 http.delete("/user/"+selectedUser.getId()+"/", (JSONObject jsonUserCurrent) -> {
 
                     Platform.runLater(() -> {
-                        usersPaginatedTable.refresh();
+                        usersPaginatedTable.refresh(false);
                     });
                 });
 

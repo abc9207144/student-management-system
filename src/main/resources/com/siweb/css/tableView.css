@@ -44,22 +44,22 @@
     -fx-padding: 3 3 3 10px;
 }
 
-.table-row-cell: odd{
+.table-row-cell:odd{
     -fx-background-color: -background-color;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
 }
-.table-row-cell: even{
+.table-row-cell:even{
     -fx-background-color: white;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
 }
 
-.table-row-cell: hover {
+.table-row-cell:hover {
     -fx-background-color: #E0E0E0;
     -fx-text-background-color: -text-color;
 }
-.table-row-cell: focused {
+.table-row-cell:focused {
     -fx-background-color: #E0E0E0;
     -fx-text-background-color: -text-color;
 }

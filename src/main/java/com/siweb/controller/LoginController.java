@@ -56,20 +56,21 @@ public class LoginController extends BaseController {
                             System.err.println("Welcome Back, Admin!");
                             System.err.println();
 
-                            com.siweb.App.setRoot("base");
+                            com.siweb.App.setRoot("admin-base");
 
                         } else if (userModel.getCurrentUserProfileRole().equals("lecturer")) {
 
-                            /*System.err.println("Welcome Back, Lecturer!");
+                            System.err.println("Welcome Back, Lecturer!");
                             System.err.println();
 
-                            com.siweb.App.setRoot("lecturer-dashboard");*/
+                            com.siweb.App.setRoot("lecturer-base");
+
                         } else if (userModel.getCurrentUserProfileRole().equals("student")) {
 
-                            //System.err.println("Welcome Back, Student!");
-                            //System.err.println();
+                            System.err.println("Welcome Back, Student!");
+                            System.err.println();
 
-                            com.siweb.App.setRoot("student-dashboard");
+                            com.siweb.App.setRoot("student-base");
                         } else {
 
                             // WIP, redirect admins / lecturers to different views

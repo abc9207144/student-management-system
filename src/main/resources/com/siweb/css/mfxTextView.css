@@ -4,11 +4,15 @@
 	-fx-font-size: 15px;
 }
 
-.mfx-text-field .text-field {
-	-fx-highlight-fill: -primary-light-color; /* Selected text highlight */
-	-fx-prompt-text-fill: -primary-light-color; /* Prompt text color */
+.mfx-text-field:disabled .text-field {
+	-fx-text-inner-color: -text-color;
 }
 
-.mfx-text-field .floating-text {
-    -fx-font-size: 15px;
+.mfx-text-field:disabled .floating-text {
+	-fx-text-fill: -text-color;
+}
+
+#userDetailPane .mfx-text-field:disabled .text-field, #userDetailPane .mfx-text-field:disabled .text-field{
+	-fx-text-inner-color: black;
+	-fx-opacity: 1.0;
 }

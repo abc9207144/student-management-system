@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<Pane prefHeight="850.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.siweb.controller.StudentProfilesController">
+    <children>
+        <MFXScrollPane id="userDetailPane" fx:id="leftUserDetailPane" layoutX="114.0" layoutY="97.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="433.0">
+            <content>
+                <VBox id="leftUserDetailVBox" fx:id="leftUserDetailVBox" prefHeight="672.0" prefWidth="419.0" spacing="20.0">
+                    <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                    </padding>
+                </VBox>
+            </content>
+        </MFXScrollPane>
+        <MFXScrollPane id="userDetailPane" fx:id="rightUserDetailPane" layoutX="640.0" layoutY="97.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="433.0">
+            <content>
+                <VBox id="rightprofileDetailVBox" fx:id="rightUserDetailVBox" prefHeight="672.0" prefWidth="419.0" spacing="20.0">
+                    <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                    </padding>
+                </VBox>
+            </content>
+        </MFXScrollPane>
+    </children>
+</Pane>
