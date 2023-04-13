@@ -4,6 +4,7 @@
 @import 'mfxTextView.css';
 @import 'mfxButton.css';
 @import 'mfxComboBox.css';
+@import 'mfxDatePicker.css';
 
 #topBar {
     -fx-font-size: 15px;

@@ -1,17 +1,24 @@
 package com.siweb.view.builder;
 
+import com.siweb.view.SelectOption;
+import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.enums.FloatMode;
+import javafx.beans.value.ChangeListener;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.input.KeyEvent;
+import javafx.util.converter.LocalDateStringConverter;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /***
  * BuilderMFXTextFieldController provides an easy way to create a MFXTextField using the builder design pattern
  */
-public class BuilderMFXTextFieldController {
+public class BuilderMFXDatePickerController {
 
-    private final MFXTextField mfxTextField;
+    private final MFXDatePicker mfxDatePicker;
 
     public static class Builder {
         private final String id;
@@ -23,7 +30,7 @@ public class BuilderMFXTextFieldController {
         private double prefWidth = Double.MAX_VALUE;
         private Insets padding = new Insets(6,6,6,6);
 
-        private EventHandler<? super KeyEvent> onKeyPressed;
+        private ChangeListener<? super String> onChangelistener;
 
         public Builder(String id, String floatingText) {
             this.id = id;
@@ -64,44 +71,45 @@ public class BuilderMFXTextFieldController {
             return this;
         }
 
-
-
-        public Builder setOnKeyPressed(EventHandler<? super KeyEvent> onKeyPressed) {
-            this.onKeyPressed = onKeyPressed;
+        public Builder addSelectionListener(ChangeListener<? super String> onChangelistener) {
+            this.onChangelistener = onChangelistener;
             return this;
         }
 
-        public BuilderMFXTextFieldController build() {
-            return new BuilderMFXTextFieldController(this);
+        public BuilderMFXDatePickerController build() {
+            return new BuilderMFXDatePickerController(this);
         }
 
 
     }
 
-    private BuilderMFXTextFieldController(Builder builder) {
+    private BuilderMFXDatePickerController(Builder builder) {
 
-        this.mfxTextField = new MFXTextField();
+        this.mfxDatePicker = new MFXDatePicker();
 
-        this.mfxTextField.setId(builder.id);
-        this.mfxTextField.setFloatingText(builder.floatingText);
-        this.mfxTextField.setFloatMode(builder.floatMode);
-        this.mfxTextField.setAnimated(builder.isAnimated);
-        this.mfxTextField.setText(builder.defaultText);
-        this.mfxTextField.setPrefWidth(builder.prefWidth);
-        this.mfxTextField.setPadding(builder.padding);
-        this.mfxTextField.setDisable(builder.isDisable);
-        //this.mfxTextField.setOpacity();
+        if(!builder.defaultText.isEmpty())
+        {
+            this.mfxDatePicker.setValue(LocalDate.parse(builder.defaultText));
+        }
 
+        this.mfxDatePicker.setId(builder.id);
+        this.mfxDatePicker.setFloatingText(builder.floatingText);
+        this.mfxDatePicker.setFloatMode(builder.floatMode);
+        this.mfxDatePicker.setAnimated(builder.isAnimated);
+        this.mfxDatePicker.setText(builder.defaultText);
+        this.mfxDatePicker.setPrefWidth(builder.prefWidth);
+        this.mfxDatePicker.setPadding(builder.padding);
+        this.mfxDatePicker.setDisable(builder.isDisable);
 
-        if(builder.onKeyPressed != null) {
-            this.mfxTextField.setOnKeyPressed(builder.onKeyPressed);
+        if(builder.onChangelistener != null) {
+            this.mfxDatePicker.selectedTextProperty().addListener(builder.onChangelistener);
         }
 
 
     }
 
-    public MFXTextField get() {
-        return this.mfxTextField;
+    public MFXDatePicker get() {
+        return this.mfxDatePicker;
     }
 
 

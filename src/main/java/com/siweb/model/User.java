@@ -8,19 +8,19 @@ import org.json.JSONObject;
  */
 public class User {
 
-    public int id;
-    public String userName;
-    public String firstName;
-    public String lastName;
-    public String email;
+    private final int id;
+    private final String userName;
+    private final String firstName;
+    private final String lastName;
+    private final String email;
 
-    public int profileId;
-    public String profileRole;
-    public String profileFatherName;
-    public String profileMotherName;
-    public String profileAddress1;
-    public String profileAddress2;
-    public String profileTel;
+    private int profileId;
+    private String profileRole;
+    private String profileFatherName;
+    private String profileMotherName;
+    private String profileAddress1;
+    private String profileAddress2;
+    private String profileTel;
 
 
     public User(JSONObject jsonUser){

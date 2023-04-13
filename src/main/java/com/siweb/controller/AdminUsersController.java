@@ -29,9 +29,7 @@ import java.util.*;
  * AdminUsersController manages the users management page of admin
  */
 public class AdminUsersController extends BaseController {
-
     private FacadePaginatedTableController<User> usersPaginatedTable;
-    private final UserModel userModel = UserModel.getInstance();
     @FXML
     private TableView<User> usersTable;
     @FXML
@@ -76,7 +74,7 @@ public class AdminUsersController extends BaseController {
                 .setOrdering(defaultOrdering)
                 .build();
 
-        // Add a listener when user select / deselect a user
+        // Add a listener when select / deselect a row
         usersPaginatedTable.addSelectionListener((obs, oldSelection, newSelection) -> {
 
             // disable the buttons and clear the detail box first, then enable them accordingly if needed below
@@ -96,7 +94,7 @@ public class AdminUsersController extends BaseController {
             // if a user is selected, show the user's details and enable save / delete button.
             if (newSelection != null) {
 
-                if(userModel.getCurrentUserID() != newSelection.id) {
+                if(userModel.getCurrentUserID() != newSelection.getId()) {
                     // prevent deleting myself, otherwise the current admin will not have the permission to keep browsing on this page anymore.
                     userDeleteBtn.setDisable(false);
                 }
@@ -119,7 +117,7 @@ public class AdminUsersController extends BaseController {
                 userDetailVBox.getChildren().add(new BuilderMFXTextFieldController.Builder("","Profile ID").setText(newSelection.getProfileId() + "").setDisable(true).build().get());
 
                 // admin cannot change its own "role", otherwise the current admin will not have the permission to keep browsing on this page anymore.
-                if(userModel.getCurrentUserID() != newSelection.id) {
+                if(userModel.getCurrentUserID() != newSelection.getId()) {
                     userDetailVBox.getChildren().add(new BuilderMFXComboBoxController.Builder("role", "Role *", List.of(new SelectOption("admin"), new SelectOption("lecturer"), new SelectOption("student"))).setValText(newSelection.getProfileRole()).build().get());
                 }
                 else {
@@ -174,6 +172,8 @@ public class AdminUsersController extends BaseController {
         userDetailPane.setVvalue(0.0);
         userDeleteBtn.setDisable(true);
 
+        usersPaginatedTable.clearSelection();
+
         FadeTransition fade = new FadeTransition();
         fade.setDuration(Duration.millis(100));
         fade.setFromValue(0);
@@ -212,6 +212,8 @@ public class AdminUsersController extends BaseController {
 
         User selectedUser = usersPaginatedTable.getCurrentSelection();
 
+        SelectOption role = ((MFXComboBox<SelectOption>) AppModel.scene.lookup("#role")).getValue();
+
         // Updating the existing user and refresh the table
         if(selectedUser != null)
         {
@@ -220,7 +222,7 @@ public class AdminUsersController extends BaseController {
                     "first_name",   ((MFXTextField) AppModel.scene.lookup("#first_name")).getText(),
                     "last_name",    ((MFXTextField) AppModel.scene.lookup("#last_name")).getText(),
                     "email",        ((MFXTextField) AppModel.scene.lookup("#email")).getText(),
-                    "role",         ((MFXComboBox<SelectOption>) AppModel.scene.lookup("#role")).getValue().getValText(),
+                    "role",         role == null ? "" : role.getValText(),
                     "father_name",  ((MFXTextField) AppModel.scene.lookup("#father_name")).getText(),
                     "mother_name",  ((MFXTextField) AppModel.scene.lookup("#mother_name")).getText(),
                     "address_1",    ((MFXTextField) AppModel.scene.lookup("#address_1")).getText(),
@@ -244,7 +246,7 @@ public class AdminUsersController extends BaseController {
                     "first_name",   ((MFXTextField) AppModel.scene.lookup("#first_name")).getText(),
                     "last_name",    ((MFXTextField) AppModel.scene.lookup("#last_name")).getText(),
                     "email",        ((MFXTextField) AppModel.scene.lookup("#email")).getText(),
-                    "role",         ((MFXComboBox<SelectOption>) AppModel.scene.lookup("#role")).getValue().getValText(),
+                    "role",         role == null ? "" : role.getValText(),
                     "father_name",  ((MFXTextField) AppModel.scene.lookup("#father_name")).getText(),
                     "mother_name",  ((MFXTextField) AppModel.scene.lookup("#mother_name")).getText(),
                     "address_1",    ((MFXTextField) AppModel.scene.lookup("#address_1")).getText(),

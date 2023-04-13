@@ -139,13 +139,17 @@ public class FacadePaginatedTableController<S> {
         this.search = search;
     }
 
+    public void clearSelection() {
+        this.tableView.getSelectionModel().clearSelection();
+    }
+
     /***
      * Refresh the table, request the updated information from the server and store the results in model again.
      * @param selectFirstAfter after refreshing, either reselect the first user of the table or the user with the previous selected index
      */
     public void refresh(Boolean selectFirstAfter) {
 
-        http.get(apiEndPoint + "?ordering="+this.ordering+"&search="+java.net.URLEncoder.encode(this.search) + "&limit="+pageSize+"&offset="+pagination.getCurrentPageIndex()*pageSize, (JSONObject res) -> {
+        http.get(apiEndPoint + "?limit="+pageSize+"&offset="+pagination.getCurrentPageIndex()*pageSize + "&ordering="+this.ordering+"&search="+java.net.URLEncoder.encode(this.search), (JSONObject res) -> {
 
             Platform.runLater(() -> {
                 pagination.setPageCount((int) Math.ceil((double) res.getInt("count") / pageSize));

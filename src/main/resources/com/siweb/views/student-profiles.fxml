@@ -7,7 +7,7 @@
 
 <Pane prefHeight="850.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.siweb.controller.StudentProfilesController">
     <children>
-        <MFXScrollPane id="userDetailPane" fx:id="leftUserDetailPane" layoutX="114.0" layoutY="97.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="433.0">
+        <MFXScrollPane id="userDetailPane" fx:id="leftUserDetailPane" layoutX="210.0" layoutY="77.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="433.0">
             <content>
                 <VBox id="leftUserDetailVBox" fx:id="leftUserDetailVBox" prefHeight="672.0" prefWidth="419.0" spacing="20.0">
                     <padding>
@@ -16,7 +16,7 @@
                 </VBox>
             </content>
         </MFXScrollPane>
-        <MFXScrollPane id="userDetailPane" fx:id="rightUserDetailPane" layoutX="640.0" layoutY="97.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="433.0">
+        <MFXScrollPane id="userDetailPane" fx:id="rightUserDetailPane" layoutX="675.0" layoutY="77.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="433.0">
             <content>
                 <VBox id="rightprofileDetailVBox" fx:id="rightUserDetailVBox" prefHeight="672.0" prefWidth="419.0" spacing="20.0">
                     <padding>

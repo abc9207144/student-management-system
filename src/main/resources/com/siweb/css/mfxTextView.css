@@ -4,6 +4,13 @@
 	-fx-font-size: 15px;
 }
 
+
+
+.mfx-text-field .text-field {
+	-fx-highlight-fill: -primary-light-color; /* Selected text highlight */
+	-fx-prompt-text-fill: -primary-light-color; /* Prompt text color */
+}
+
 .mfx-text-field:disabled .text-field {
 	-fx-text-inner-color: -text-color;
 }

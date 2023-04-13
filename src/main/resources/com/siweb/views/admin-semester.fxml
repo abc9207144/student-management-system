@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<Pane prefHeight="850.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.siweb.controller.AdminSemesterController">
+   <children>
+      <TableView id="semestersTable" fx:id="semestersTable" fixedCellSize="0.0" layoutX="65.0" layoutY="81.0" prefHeight="682.0" prefWidth="755.0" />
+      <Pagination id="semestersTablePagination" fx:id="semestersTablePagination" layoutX="330.0" layoutY="769.0" prefHeight="26.0" prefWidth="225.0" />
+      <MFXButton id="semesterNewBtn" fx:id="semesterNewBtn" buttonType="RAISED" depthLevel="LEVEL1" layoutX="65.0" layoutY="27.0" onAction="#semesterNew" prefHeight="41.0" prefWidth="169.0" text="Add new semester" />
+      <MFXButton id="semesterDeleteBtn" fx:id="semesterDeleteBtn" buttonType="RAISED" depthLevel="LEVEL1" disable="true" layoutX="854.0" layoutY="774.0" onAction="#semesterDelete" prefHeight="32.0" prefWidth="90.0" styleClass="delete-button" text="Delete" textFill="WHITE" />
+      <MFXButton id="semesterSaveBtn" fx:id="semesterSaveBtn" buttonType="RAISED" depthLevel="LEVEL1" disable="true" layoutX="1195.0" layoutY="774.0" onAction="#semesterSave" prefHeight="32.0" prefWidth="90.0" styleClass="success-button" text="Save" />
+      <MFXScrollPane id="semesterDetailPane" fx:id="semesterDetailPane" layoutX="854.0" layoutY="82.0" prefHeight="677.0" prefWidth="433.0">
+         <content>
+            <VBox id="semesterDetailVBox" fx:id="semesterDetailVBox" prefHeight="672.0" prefWidth="419.0" spacing="20.0">
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </VBox>
+         </content>
+      </MFXScrollPane>
+      <Label id="resultsCountLabel" fx:id="resultsCountLabel" alignment="CENTER_RIGHT" layoutX="574.0" layoutY="763.0" prefHeight="32.0" prefWidth="246.0">
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </Label>
+      <HBox id="tableHeaderHBox" fx:id="tableHeaderHBox" alignment="CENTER_RIGHT" layoutX="241.0" layoutY="12.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="66.0" prefWidth="580.0" spacing="8.0" />
+   </children>
+</Pane>
