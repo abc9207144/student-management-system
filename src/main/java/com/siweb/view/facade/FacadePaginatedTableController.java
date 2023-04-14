@@ -30,6 +30,8 @@ public class FacadePaginatedTableController<S> {
     private final String resultsCountLabelId;
     private ObservableModel<S> observableModel;
 
+    private int previousPage = -1;
+
     /***
      * A Builder to create our Paginated Table
      * @param <S> The data model, ex. User
@@ -44,7 +46,6 @@ public class FacadePaginatedTableController<S> {
         private String ordering = "";
         private String resultsCountLabelId;
         private ObservableModel<S> observableModel;
-
 
         /***
          * Construct the required params in the builder
@@ -115,9 +116,14 @@ public class FacadePaginatedTableController<S> {
         // Update table when changing pages
         pagination.setPageFactory(pageIndex -> {
 
-            this.refresh(true);
-
-            return new Label("");
+            // javafx calls setPageFactory() 2 times in the beginning in order to prepare for pages, and also multiple times when returning null.
+            // this is a hotfix to prevent our table refreshed multiple times unexpectedly.
+            if(pageIndex != this.previousPage)
+            {
+                this.previousPage = pageIndex;
+                this.refresh(true);
+            }
+            return new Label();
 
         });
     }

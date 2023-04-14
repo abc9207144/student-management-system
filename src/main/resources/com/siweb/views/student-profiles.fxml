@@ -9,7 +9,7 @@
     <children>
         <MFXScrollPane id="userDetailPane" fx:id="leftUserDetailPane" layoutX="210.0" layoutY="77.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="433.0">
             <content>
-                <VBox id="leftUserDetailVBox" fx:id="leftUserDetailVBox" prefHeight="672.0" prefWidth="419.0" spacing="20.0">
+                <VBox id="leftUserDetailVBox" fx:id="leftUserDetailVBox" prefHeight="672.0" prefWidth="419.0" spacing="20.0" styleClass="readOnly">
                     <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                     </padding>
@@ -18,7 +18,7 @@
         </MFXScrollPane>
         <MFXScrollPane id="userDetailPane" fx:id="rightUserDetailPane" layoutX="675.0" layoutY="77.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="433.0">
             <content>
-                <VBox id="rightprofileDetailVBox" fx:id="rightUserDetailVBox" prefHeight="672.0" prefWidth="419.0" spacing="20.0">
+                <VBox id="rightprofileDetailVBox" fx:id="rightUserDetailVBox" prefHeight="672.0" prefWidth="419.0" spacing="20.0" styleClass="readOnly">
                     <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                     </padding>

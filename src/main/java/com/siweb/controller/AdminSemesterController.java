@@ -108,10 +108,10 @@ public class AdminSemesterController extends BaseController {
                 // show basic information
                 semesterDetailVBox.getChildren().add(new Label("Semester Information"));
                 semesterDetailVBox.getChildren().add(new BuilderMFXTextFieldController.Builder("id","ID").setText(newSelection.getId() + "").setDisable(true).build().get());
-                semesterDetailVBox.getChildren().add(new BuilderMFXTextFieldController.Builder("year","Year").setText(newSelection.getYear()).build().get());
-                semesterDetailVBox.getChildren().add(new BuilderMFXComboBoxController.Builder("semester", "Semester", List.of(new SelectOption("1"), new SelectOption("2"))).setValText(newSelection.getSemester()).build().get());
-                semesterDetailVBox.getChildren().add(new BuilderMFXDatePickerController.Builder("date_start","Date Start").setText(newSelection.getDateStart()).build().get());
-                semesterDetailVBox.getChildren().add(new BuilderMFXDatePickerController.Builder("date_end","Date End").setText(newSelection.getDateEnd()).build().get());
+                semesterDetailVBox.getChildren().add(new BuilderMFXTextFieldController.Builder("year","Year *").setText(newSelection.getYear()).build().get());
+                semesterDetailVBox.getChildren().add(new BuilderMFXComboBoxController.Builder("semester", "Semester *", List.of(new SelectOption("1"), new SelectOption("2"))).setValText(newSelection.getSemester()).build().get());
+                semesterDetailVBox.getChildren().add(new BuilderMFXDatePickerController.Builder("date_start","Date Start *").setText(newSelection.getDateStart()).build().get());
+                semesterDetailVBox.getChildren().add(new BuilderMFXDatePickerController.Builder("date_end","Date End *").setText(newSelection.getDateEnd()).build().get());
 
             }
         });
@@ -166,10 +166,10 @@ public class AdminSemesterController extends BaseController {
 
         semesterDetailVBox.getChildren().add(new Label("Semester Information"));
         semesterDetailVBox.getChildren().add(new BuilderMFXTextFieldController.Builder("id","ID").setDisable(true).build().get());
-        semesterDetailVBox.getChildren().add(new BuilderMFXTextFieldController.Builder("year","Year").build().get());
-        semesterDetailVBox.getChildren().add(new BuilderMFXComboBoxController.Builder("semester", "Semester", List.of(new SelectOption("1"), new SelectOption("2"))).build().get());
-        semesterDetailVBox.getChildren().add(new BuilderMFXDatePickerController.Builder("date_start","Date Start").build().get());
-        semesterDetailVBox.getChildren().add(new BuilderMFXDatePickerController.Builder("date_end","Date End").build().get());
+        semesterDetailVBox.getChildren().add(new BuilderMFXTextFieldController.Builder("year","Year *").build().get());
+        semesterDetailVBox.getChildren().add(new BuilderMFXComboBoxController.Builder("semester", "Semester *", List.of(new SelectOption("1"), new SelectOption("2"))).build().get());
+        semesterDetailVBox.getChildren().add(new BuilderMFXDatePickerController.Builder("date_start","Date Start *").build().get());
+        semesterDetailVBox.getChildren().add(new BuilderMFXDatePickerController.Builder("date_end","Date End *").build().get());
     }
 
     /***
